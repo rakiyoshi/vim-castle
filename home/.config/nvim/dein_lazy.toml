@@ -53,3 +53,19 @@ on_ft = ['typescriptreact']
 hook_add = '''
 let g:vim_jsx_pretty_colorful_config = 1
 '''
+
+# Lsp
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+if = 'has("nvim")'
+on_event = 'BufRead'
+hook_source = '''
+  lua require('lsp_rc')
+'''
+
+[[plugins]]
+repo = 'kabouzeid/nvim-lspinstall'
+on_source = 'nvim-lspconfig'
+hook_source = '''
+  lua require'lspinstall'.setup()
+'''
