@@ -43,15 +43,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-"-----------------------------
-" wbthomason/packer.nvim 設定
-"-----------------------------
-let s:packer_repo_dir = expand('~/.local/share/nvim/site/pack/packer/start/packer.nvim')
-
-if !isdirectory(s:packer_repo_dir)
-  execute '!git clone --depth 1 https://github.com/wbthomason/packer.nvim' s:packer_repo_dir
-endif
-
 ""----------------------------------------------------------------------
 "" 基本設定
 ""----------------------------------------------------------------------
