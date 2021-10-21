@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.tf setf terraform
+au BufRead,BufNewFile *.tf set filetype=terraform
