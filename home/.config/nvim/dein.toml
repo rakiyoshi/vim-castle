@@ -16,58 +16,10 @@
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 
-# ddc
-[[plugins]]
-repo = 'Shougo/ddc.vim'
-hook_post_update = '''
-" Customize global settings
-" Use around source.
-" https://github.com/Shougo/ddc-around
-call ddc#custom#patch_global('sources', ['around'])
-
-" Use matcher_head and sorter_rank.
-" https://github.com/Shougo/ddc-matcher_head
-" https://github.com/Shougo/ddc-sorter_rank
-call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-      \   'matchers': ['matcher_head'],
-      \   'sorters': ['sorter_rank']},
-      \ })
-
-" Change source options
-call ddc#custom#patch_global('sourceOptions', {
-      \ 'around': {'mark': 'A'},
-      \ })
-call ddc#custom#patch_global('sourceParams', {
-      \ 'around': {'maxSize': 500},
-      \ })
-
-" Customize settings on a filetype
-call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
-call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
-      \ 'clangd': {'mark': 'C'},
-      \ })
-call ddc#custom#patch_filetype('markdown', 'sourceParams', {
-      \ 'around': {'maxSize': 100},
-      \ })
-
-" Mappings
-
-" <TAB>: completion.
-inoremap <silent><expr> <TAB>
-\ pumvisible() ? "\<C-n>" :
-\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-\ "\<TAB>" : ddc#manual_complete()
-
-" <S-TAB>: completion back.
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" Use ddc.
-call ddc#enable()
-'''
-
+# 補完 (vim)
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+if = '!has("nvim")'
 hook_add='''
 let g:lsp_signs_enabled = 1         " enable signs
 let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
@@ -80,6 +32,7 @@ let g:lsp_signs_warning = {'text': '‼'}
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+if = '!has("nvim")'
 hook_add='''
 let g:lsp_settings_servers_dir = expand('~/.local/share/vim-lsp-settings/servers')
 let g:lsp_settings_filetype_terraform = 'terraform-ls'
@@ -163,6 +116,10 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
+" Python パスを設定
+let g:python_host_prog = system('(type asdf &>/dev/null && echo -n $(asdf which python2)) || echo -n $(which python)')
+let g:python3_host_prog = system('(type asdf &>/dev/null && echo -n $(asdf which python3)) || echo -n $(which python3)')
+
 " Define mappings
 nnoremap <silent> ,f :<C-u>DeniteProjectDir file/rec<CR>
 nnoremap <silent> ,g :<C-u>DeniteProjectDir grep<CR>
@@ -229,21 +186,21 @@ call denite#custom#option('default', s:denite_default_options)
 
 
 # Lint
-[[plugins]]
-repo = 'vim-syntastic/syntastic'
-hook_add = '''
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_yaml_checkers = ['yamllint']
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_typescript_checkers = ['eslint']
-'''
+# [[plugins]]
+# repo = 'vim-syntastic/syntastic'
+# hook_add = '''
+# set statusline+=%#warningmsg#
+# set statusline+=%{SyntasticStatuslineFlag()}
+# set statusline+=%*
+# let g:syntastic_always_populate_loc_list = 1
+# let g:syntastic_auto_loc_list = 1
+# let g:syntastic_check_on_open = 1
+# let g:syntastic_check_on_wq = 0
+# let g:syntastic_yaml_checkers = ['yamllint']
+# let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+# let g:syntastic_ruby_checkers = ['rubocop']
+# let g:syntastic_typescript_checkers = ['eslint']
+# '''
 
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
