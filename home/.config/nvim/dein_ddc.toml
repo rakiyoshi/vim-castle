@@ -143,30 +143,3 @@ repo = 'hrsh7th/vim-vsnip-integ'
 
 [[plugins]]
 repo = 'rafamadriz/friendly-snippets'
-
-[[plugins]]
-repo = 'kuuote/denops-skkeleton.vim'
-on_source = 'ddc.vim'
-on_map = {ic = '<plug>(skkeleton-'}
-hook_add = '''
-  imap <C-j> <Plug>(skkeleton-toggle)
-  cmap <C-j> <Plug>(skkeleton-toggle)
-  function! s:skkeleton_init() abort
-    call skkeleton#config({
-      \ 'userJisyo': expand('~/.cache/skkeleton')
-      \ })
-    call skkeleton#register_kanatable('rom', {
-      \ "z\<Space>": ["\u3000", ''],
-      \ 'jj': 'escape',
-      \ 'z,': ['，', ''],
-      \ 'z9': ['（', ''],
-      \ 'z0': ['）', ''],
-      \ })
-    if has('win32') || has('win64')
-      call skkeleton#config({
-        \ 'globalJisyo': expand('~/AppData/Local/skk/SKK-JISYO.L')
-        \ })
-    endif
-  endfunction
-  autocmd User skkeleton-initialize-pre call s:skkeleton_init()
-'''
