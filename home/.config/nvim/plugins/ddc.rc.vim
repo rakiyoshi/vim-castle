@@ -21,9 +21,9 @@ else
 endif
 
 if has('nvim')
-  call ddc#custom#patch_global('sources', ['nvim-lsp', 'skkeleton', 'buffer', 'around', 'vsnip', 'file', 'dictionary'])
+  call ddc#custom#patch_global('sources', ['nvim-lsp', 'buffer', 'around', 'vsnip', 'file', 'dictionary'])
 else
-  call ddc#custom#patch_global('sources', ['vim-lsp', 'skkeleton', 'buffer', 'around', 'vsnip', 'file', 'dictionary'])
+  call ddc#custom#patch_global('sources', ['vim-lsp', 'buffer', 'around', 'vsnip', 'file', 'dictionary'])
 endif
 call ddc#custom#patch_global('sourceOptions', {
       \ '_': {
@@ -44,12 +44,6 @@ call ddc#custom#patch_global('sourceOptions', {
 	    \   'forceCompletionPattern': '\S/\S*',
       \ },
       \ 'vsnip': {'dup': v:true},
-      \ 'skkeleton': {
-      \   'mark': 'skk',
-      \   'matchers': ['skkeleton'],
-      \   'sorters': [],
-      \   'minAutoCompleteLength': 2,
-      \ },
       \ })
 call ddc#custom#patch_global('sourceParams', {
       \ 'around': {'maxSize': 500},
@@ -67,7 +61,7 @@ call ddc#custom#patch_filetype(
       \ )
 
 call ddc#custom#patch_filetype(['vim', 'toml'], {
-      \ 'sources': ['necovim', 'skkeleton', 'buffer', 'around', 'vsnip', 'file', 'dictionary'],
+      \ 'sources': ['necovim', 'buffer', 'around', 'vsnip', 'file', 'dictionary'],
       \ })
 call ddc#custom#patch_filetype(
       \ ['zsh'], 'sources', ['zsh']
