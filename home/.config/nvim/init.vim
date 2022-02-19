@@ -66,6 +66,7 @@ autocmd FileType typescript setlocal ts=2 sts=2 sw=2
 autocmd FileType typescriptreact setlocal ts=2 sts=2 sw=2
 autocmd FileType json setlocal ts=2 sts=2 sw=2
 autocmd FileType markdown setlocal ts=2 sts=2 sw=2
+autocmd FileType go setlocal noexpandtab
 
 " 行番号を表示
 set number
