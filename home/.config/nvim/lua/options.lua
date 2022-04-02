@@ -25,6 +25,9 @@ end
 opt.conceallevel = 0
 -- auto reload
 opt.autoread = true
+-- color
+opt.pumblend = 20 -- Transparency
+opt.termguicolors = true
 
 
 ----------------------
