@@ -234,6 +234,16 @@ let g:airline_theme = 'molokai'
 
 [[plugins]]
 repo = 'tomasr/molokai'
+hook_add = '''
+let g:rehash256 = 1
+call dein#source('molokai')
+colorscheme molokai
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight SpecialKey ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
+highlight lineNr ctermbg=NONE guibg=NONE
+'''
 
 # gitを操作
 [[plugins]]
