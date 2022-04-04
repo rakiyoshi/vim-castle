@@ -21,15 +21,13 @@ if vim.call('dein#load_state', dein_dir) == 1 then
 	local dein_toml_dir = vim.env.HOME .. '/.config/nvim/dein'
 	local dein_toml = dein_toml_dir .. '/base.toml'
 	local dein_toml_lazy = dein_toml_dir .. '/lazy.toml'
-	local dein_toml_python = dein_toml_dir .. '/ddc.toml'
+	local dein_toml_ddc = dein_toml_dir .. '/ddc.toml'
 
 	vim.call('dein#begin', dein_dir, {vim.fn.expand('<sfile>'), dein_toml, dein_toml_lazy, dein_toml_input})
 
 	vim.call('dein#load_toml', dein_toml, {lazy = 0})
 	vim.call('dein#load_toml', dein_toml_lazy, {lazy = 1})
-	if vim.fn.has('python3') == 1 then
-		vim.call('dein#load_toml', dein_toml_python, {lazy = 1})
-	end
+    vim.call('dein#load_toml', dein_toml_ddc, {lazy = 1})
 	vim.call('dein#end')
 	vim.call('dein#save_state')
 end
