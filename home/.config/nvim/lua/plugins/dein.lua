@@ -27,7 +27,7 @@ if vim.call('dein#load_state', dein_dir) == 1 then
 
 	vim.call('dein#load_toml', dein_toml, {lazy = 0})
 	vim.call('dein#load_toml', dein_toml_lazy, {lazy = 1})
-    vim.call('dein#load_toml', dein_toml_ddc, {lazy = 1})
+	vim.call('dein#load_toml', dein_toml_ddc, {lazy = 1})
 	vim.call('dein#end')
 	vim.call('dein#save_state')
 end
