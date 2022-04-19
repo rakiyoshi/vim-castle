@@ -18,7 +18,7 @@ opt.splitbelow = true
 opt.undodir = vim.env.HOME .. '/.config/nvim/undo'
 opt.undofile = true
 -- Clipboard (mac)
-if jit.os == "Darwin" then
+if jit.os == "OSX" then
   opt.clipboard = 'unnamed'
 end
 -- Do not hide quote of JSON
