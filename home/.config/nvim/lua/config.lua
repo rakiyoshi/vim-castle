@@ -7,3 +7,5 @@ vim.cmd('syntax on')
 
 require('options')
 require('plugins.dein')
+
+vim.cmd('filetype on')
