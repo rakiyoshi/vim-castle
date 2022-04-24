@@ -53,3 +53,7 @@ on_ft = ['typescriptreact']
 hook_add = '''
 let g:vim_jsx_pretty_colorful_config = 1
 '''
+
+[[plugins]]
+repo = 'mattn/vim-goimports'
+on_ft = ['go']
