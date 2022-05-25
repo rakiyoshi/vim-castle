@@ -115,7 +115,6 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
-depends = ['vim-vsnip-integ', 'friendly-snippets']
 on_event = 'InsertEnter'
 hook_add = '''
 " Expand
@@ -126,7 +125,14 @@ imap <expr> <C-f> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-f>'
 smap <expr> <C-f> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-f>'
 imap <expr> <C-b> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-b>'
 smap <expr> <C-b> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-b>'
-let g:vsnip_snippet_dir = expand('~/dotfiles/nvim/snippets')
+
+let g:lsp_settings = {
+  \   'gopls': {
+  \     'initialization_options': {
+  \       'usePlaceholders': v:true,
+  \     },
+  \   },
+  \ }
 '''
 
 [[plugins]]
