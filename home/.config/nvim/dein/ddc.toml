@@ -115,6 +115,7 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
+depends = ['vim-vsnip-integ', 'friendly-snippets']
 on_event = 'InsertEnter'
 hook_add = '''
 " Expand
