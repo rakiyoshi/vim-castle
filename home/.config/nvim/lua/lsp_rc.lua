@@ -1,5 +1,21 @@
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
+local lsp_installer = require("nvim-lsp-installer")
+local lsp_installer_servers = require("nvim-lsp-installer.servers")
+local lspconfig = require'lspconfig'
+
+-- setup installer
+lsp_installer.setup({
+    automatic_installation = true,
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
+    }
+})
+
+-- setup lspconfig
+local installed_servers = lsp_installer_servers.get_installed_servers()
 local on_attach = function(_, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -29,35 +45,28 @@ local on_attach = function(_, bufnr)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
     buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
-
-local function setup_servers()
-    require'lspinstall'.setup()
-    local servers = require'lspinstall'.installed_servers()
-    local lspconfig = require'lspconfig'
-    for _, server in pairs(servers) do
-        if server == 'sumneko_lua' then
-            lspconfig.sumneko_lua.setup{
-                settings = {
-                    Lua = {
-                        runtime = {
-                            version = 'LuaJIT'
-                        },
-                        diagnostics = {
-                            globals = { 'vim' },
-                        },
-                    },
+local default_opts = {
+    on_attach = on_attach,
+}
+local server_opts = {
+    sumneko_lua = {
+        settings = {
+            Lua = {
+                runtime = {
+                    version = 'LuaJIT'
                 },
-                on_attach = on_attach,
-            }
-        else
-            lspconfig[server].setup{
-                on_attach = on_attach,
-            }
-        end
-    end
+                diagnostics = {
+                    globals = { 'vim' },
+                },
+            },
+	}
+    }
+}
+
+for i = 1, #installed_servers do
+    local server_name = installed_servers[i].name
+    local opts = vim.tbl_deep_extend("force", default_opts, server_opts[server_name] or {})
+    lspconfig[server_name].setup(opts)
 end
 
-require'lspinstall'.post_install_hook = function ()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server

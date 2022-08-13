@@ -12,15 +12,12 @@ hook_source = '''
 repo = 'neovim/nvim-lspconfig'
 if = 'has("nvim")'
 on_event = 'BufRead'
-hook_source = '''
-  lua require('lsp_rc')
-'''
 
 [[plugins]]
 repo = 'williamboman/nvim-lsp-installer'
 on_source = 'nvim-lspconfig'
 hook_source = '''
-lua require'lsp-installer'.setup()
+  lua require('lsp_rc')
 '''
 
 [[plugins]]
