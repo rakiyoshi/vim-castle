@@ -54,6 +54,11 @@ hook_add = '''
 let g:vim_jsx_pretty_colorful_config = 1
 '''
 
+# Golang
 [[plugins]]
 repo = 'mattn/vim-goimports'
+on_ft = ['go']
+
+[[plugins]]
+repo = 'sebdah/vim-delve'
 on_ft = ['go']
