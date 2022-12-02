@@ -59,7 +59,20 @@ local server_opts = {
                     globals = { 'vim' },
                 },
             },
-	}
+        }
+    },
+    pylsp = {
+        settings = {
+            pylsp = {
+                plugins = {
+                    pycodestyle = {
+                        ignore = {
+                            "E111"
+                        }
+                    },
+                }
+            }
+        }
     }
 }
 
