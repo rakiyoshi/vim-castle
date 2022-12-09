@@ -1,11 +1,14 @@
 # ddc
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ['context_filetype.vim', 'pum.vim']
+depends = ['context_filetype.vim', 'pum.vim', 'ddc-ui-native']
 on_source = 'nvim-lspconfig'
 hook_source = '''
   source ~/.config/nvim/plugins/ddc.rc.vim
 '''
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
 
 # Lsp
 [[plugins]]

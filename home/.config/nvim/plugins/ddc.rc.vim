@@ -68,6 +68,8 @@ call ddc#custom#patch_filetype(['zsh'], 'sourceOptions', {
       \ 'zsh': {'mark': 'Z'},
       \ })
 
+call ddc#custom#patch_global('ui', 'native')
+
 " autocmd User PumCompleteDone call vsnip_integ#on_complete_done(g:pum#completed_item)
 
 call ddc#enable()
