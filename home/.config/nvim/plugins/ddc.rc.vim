@@ -2,8 +2,6 @@ set complete=
 call ddc#custom#patch_global('ui', 'pum')
 call ddc#custom#patch_global('autoCompleteEvents',
   \ ['InsertEnter', 'TextChangedI', 'TextChangedP', 'CmdlineChanged'])
-inoremap <Tab>   <Cmd>call pum#map#insert_relative(+1)<CR>
-inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
 inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
 inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
@@ -12,8 +10,6 @@ inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 " Commandline completion
 nnoremap :       <Cmd>call CommandlinePre()<CR>:
 function! CommandlinePre() abort
-	cnoremap <Tab>   <Cmd>call pum#map#insert_relative(+1)<CR>
-	cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 	cnoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
 	cnoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
 	cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
