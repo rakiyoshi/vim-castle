@@ -241,6 +241,9 @@ call dein#source('molokai')
 colorscheme molokai
 '''
 
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+
 # gitを操作
 [[plugins]]
 repo = 'tpope/vim-fugitive'
