@@ -23,7 +23,7 @@ if vim.call('dein#load_state', dein_dir) == 1 then
 	local dein_toml_lazy = dein_toml_dir .. '/lazy.toml'
 	local dein_toml_ddc = dein_toml_dir .. '/ddc.toml'
 
-	vim.call('dein#begin', dein_dir, {vim.fn.expand('<sfile>'), dein_toml, dein_toml_lazy, dein_toml_input})
+	vim.call('dein#begin', dein_dir, {vim.fn.expand('<sfile>'), dein_toml, dein_toml_lazy, dein_toml_ddc})
 
 	vim.call('dein#load_toml', dein_toml, {lazy = 0})
 	vim.call('dein#load_toml', dein_toml_lazy, {lazy = 1})

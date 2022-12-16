@@ -243,6 +243,9 @@ colorscheme molokai
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
+hook_done_update = '''
+TSUpdate
+'''
 
 # gitを操作
 [[plugins]]
