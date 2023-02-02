@@ -10,6 +10,16 @@
 #
 # 参考: https://qiita.com/delphinus/items/cd221a450fd23506e81a
 
+# Treesitter
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+on_event = 'BufRead'
+hook_post_update = '''
+TSUpdate
+'''
+hook_source = 'source ~/.config/nvim/lua/plugins/nvim-treesitter.lua'
+
+
 # JSON
 [[plugins]]
 repo = 'elzr/vim-json'
