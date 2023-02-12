@@ -1,10 +1,9 @@
-local lsp_installer = require("nvim-lsp-installer")
-local lsp_installer_servers = require("nvim-lsp-installer.servers")
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require'lspconfig'
 
--- setup installer
-lsp_installer.setup({
-    automatic_installation = true,
+-- setup mason
+mason.setup({
     ui = {
         icons = {
             server_installed = "✓",
@@ -14,8 +13,11 @@ lsp_installer.setup({
     }
 })
 
--- setup lspconfig
-local installed_servers = lsp_installer_servers.get_installed_servers()
+mason_lspconfig.setup({
+    automatic_installation = true
+})
+
+-- default options
 local on_attach = function(_, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -76,8 +78,10 @@ local server_opts = {
     }
 }
 
+-- setup configurations
+local installed_servers = mason_lspconfig.get_installed_servers()
 for i = 1, #installed_servers do
-    local server_name = installed_servers[i].name
+    local server_name = installed_servers[i]
     local opts = vim.tbl_deep_extend("force", default_opts, server_opts[server_name] or {})
     lspconfig[server_name].setup(opts)
 end
