@@ -17,8 +17,12 @@ if = 'has("nvim")'
 on_event = 'BufRead'
 
 [[plugins]]
-repo = 'williamboman/nvim-lsp-installer'
+repo = 'williamboman/mason.nvim'
 on_source = 'nvim-lspconfig'
+
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'
+on_source = 'mason.nvim'
 hook_source = '''
   lua require('lsp_rc')
 '''
