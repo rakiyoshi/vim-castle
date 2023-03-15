@@ -35,8 +35,8 @@ opt.termguicolors = true
 ----------------------
 
 -- Indent
-opt_global.smarttab = true
-opt_global.expandtab = true
-opt_global.tabstop = 4
-opt_global.smartindent = true
-opt_global.shiftwidth = 4
+opt.smarttab = true
+opt.expandtab = true
+opt.tabstop = 4
+opt.smartindent = true
+opt.shiftwidth = 4
