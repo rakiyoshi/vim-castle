@@ -202,8 +202,8 @@ call denite#custom#option('default', s:denite_default_options)
 # let g:syntastic_typescript_checkers = ['eslint']
 # '''
 
-[[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
+# [[plugins]]
+# repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
