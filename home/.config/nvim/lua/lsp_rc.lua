@@ -75,6 +75,14 @@ local server_opts = {
                 }
             }
         }
+    },
+    yamlls = {
+        settings = {
+            yaml = {
+                -- BUG: https://github.com/redhat-developer/yaml-language-server/pull/859
+                keyOrdering = false
+            }
+        }
     }
 }
 
