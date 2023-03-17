@@ -157,7 +157,14 @@ call denite#custom#var('grep', {
   \ 'command': ['ag'],
   \ 'recursive_opts': [],
   \ 'pattern_opt': [],
-  \ 'default_opts': ['--follow', '--nogroup', '--nocolor', '--ignore-dir', 'node_modules', '--hidden']
+  \ 'default_opts': [
+  \   '--follow',
+  \   '--nogroup',
+  \   '--nocolor',
+  \   '--hidden',
+  \   '--ignore-dir', 'node_modules',
+  \   '--ignore-dir', '.git'
+  \ ]
   \ })
 
 " Define aliases
