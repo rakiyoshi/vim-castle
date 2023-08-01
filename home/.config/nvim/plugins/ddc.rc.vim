@@ -47,31 +47,57 @@ function! CommandlinePost() abort
 endfunction
 
 if has('nvim')
-  call ddc#custom#patch_global('sources', ['nvim-lsp', 'buffer', 'around', 'vsnip', 'file', 'dictionary'])
+  call ddc#custom#patch_global('sources', ['nvim-lsp', 'vsnip', 'buffer', 'around', 'file', 'dictionary'])
 else
-  call ddc#custom#patch_global('sources', ['vim-lsp', 'buffer', 'around', 'vsnip', 'file', 'dictionary'])
+  call ddc#custom#patch_global('sources', ['vim-lsp', 'vsnip', 'buffer', 'around', 'file', 'dictionary'])
 endif
 
-call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-      \   'matchers': ['matcher_fuzzy'],
-      \   'sorters': ['sorter_fuzzy'],
-      \   'converters': ['converter_remove_overlap', 'converter_truncate', 'converter_fuzzy'],
-      \   'ignoreCase': v:true,
-      \ },
-      \ 'around': {'mark': 'A'},
-      \ 'dictionary': {'mark': 'D', 'minAutoCompleteLength': 3},
-      \ 'necovim': {'mark': 'neco'},
-      \ 'nvim-lsp': {'mark': 'lsp', 'forceCompletionPattern': "\\.|:\\s*|->", 'ignoreCase': v:true},
-      \ 'vim-lsp': {'mark': 'lsp', 'forceCompletionPattern': "\\.|:\\s*|->", 'ignoreCase': v:true},
-      \ 'buffer': {'mark': 'B', 'ignoreCase': v:true},
-	    \ 'file': {
-	    \   'mark': 'F',
-	    \   'isVolatile': v:true,
-	    \   'forceCompletionPattern': '\S/\S*',
-      \ },
-      \ 'vsnip': {'dup': v:true},
-      \ })
+call ddc#custom#patch_global('sourceOptions',
+\ #{
+\   _: #{
+\     matchers: ['matcher_fuzzy'],
+\     sorters: ['sorter_fuzzy'],
+\     converters: ['converter_remove_overlap', 'converter_truncate', 'converter_fuzzy'],
+\     ignoreCase: v:true,
+\   },
+\   around: #{
+\     mark: 'A',
+\   },
+\   buffer: #{mark: 'B', ignoreCase: v:true},
+\   dictionary: #{
+\     mark: 'D',
+\     minAutoCompleteLength: 3,
+\   },
+\   necovim: #{
+\     mark: 'neco'
+\   },
+\   nvim-lsp: #{
+\     mark: 'lsp',
+\     forceCompletionPattern: '\.\w*|:\w*|->\w*',
+\     ignoreCase: v:true,
+\   },
+\   vim-lsp: #{
+\     mark: 'lsp',
+\     forceCompletionPattern: "\\.|:\\s*|->",
+\     ignoreCase: v:true
+\   },
+\   file: #{
+\     mark: 'F',
+\     isVolatile: v:true,
+\     forceCompletionPattern: '\S/\S*',
+\   },
+\   vsnip: #{
+\     mark: 'vsnip',
+\     dup: v:true,
+\   },
+\ })
+
+call ddc#custom#patch_global('sourceOptions', #{
+    \   vim-lsp: #{
+    \     matchers: ['matcher_head'],
+    \     mark: 'lsp',
+    \   },
+    \ })
 
 call ddc#custom#patch_global('sourceParams', {
       \ 'around': {'maxSize': 500},
