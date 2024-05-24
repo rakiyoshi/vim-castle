@@ -47,7 +47,7 @@ function! CommandlinePost() abort
 endfunction
 
 if has('nvim')
-  call ddc#custom#patch_global('sources', ['nvim-lsp', 'vsnip', 'buffer', 'around', 'file', 'dictionary'])
+  call ddc#custom#patch_global('sources', ['lsp', 'vsnip', 'buffer', 'around', 'file', 'dictionary'])
 else
   call ddc#custom#patch_global('sources', ['vim-lsp', 'vsnip', 'buffer', 'around', 'file', 'dictionary'])
 endif
