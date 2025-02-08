@@ -216,7 +216,7 @@ call denite#custom#option('default', s:denite_default_options)
 repo = 'Yggdroot/indentLine'
 hook_add = '''
 let g:indentLine_char = '¦'
-set conceallevel=0
+autocmd Filetype json let g:indentLine_setConceal = 0
 '''
 
 [[plugins]]
