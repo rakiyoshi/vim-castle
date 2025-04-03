@@ -37,6 +37,6 @@ opt.termguicolors = true
 -- Indent
 opt.smarttab = true
 opt.expandtab = true
-opt.tabstop = 4
+opt.tabstop = 2
 opt.smartindent = true
-opt.shiftwidth = 4
+opt.shiftwidth = 2
