@@ -1,7 +1,6 @@
 local opt = vim.opt
 local opt_global = vim.go
 
-
 --------------------------
 -- Local and Global (set)
 --------------------------
@@ -15,7 +14,7 @@ opt.fileencodings = 'utf-8,iso-2022-jp,euc-jp,sjis'
 opt.splitright = true
 opt.splitbelow = true
 -- Persistent undo
-opt.undodir = vim.env.HOME .. '/.config/nvim/undo'
+opt.undodir = vim.env.HOME .. '/.cache/nvim/undo'
 opt.undofile = true
 -- Clipboard (mac)
 if jit.os == "OSX" then
